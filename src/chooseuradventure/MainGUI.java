@@ -6,6 +6,10 @@
 
 package chooseuradventure;
 
+import java.util.ArrayList;
+import java.util.Map;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Greg
@@ -16,6 +20,7 @@ public class MainGUI extends javax.swing.JFrame {
      * Creates new form MainGUI
      */
     private TehAdventure adventure;
+    private ArrayList<Map<Object, String>> intermediate=new ArrayList<>();
     
     public MainGUI() {
         initComponents();
@@ -25,6 +30,19 @@ public class MainGUI extends javax.swing.JFrame {
         this.jButton2.setText(adventure.getButtonTwo());
         this.jButton3.setText(adventure.getButtonThree());
     }
+    
+    public MainGUI(ArrayList<Map<Object, String>> intermediate) {
+        initComponents();
+        
+        this.intermediate = intermediate;
+        this.adventure=new TehAdventure(intermediate);
+        this.jTextArea1.append(adventure.getMainText());
+        this.jButton1.setText(adventure.getButtonOne());
+        this.jButton2.setText(adventure.getButtonTwo());
+        this.jButton3.setText(adventure.getButtonThree());
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,6 +83,7 @@ public class MainGUI extends javax.swing.JFrame {
         });
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -103,38 +122,57 @@ public class MainGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        adventure.enterAndUpdate(adventure.getSingleValue(0));
+        if(intermediate.size()<=Integer.parseInt(adventure.getSingleValue(0))){
+            //JOptionPane.showInputDialog("Scene Does not exist");
+            JOptionPane.showConfirmDialog(rootPane, "Scene Does not exist");
+            
+        } else {
+        
+        adventure.enterAndUpdate(Integer.parseInt(adventure.getSingleValue(0)));
         this.jTextArea1.setText(null);
         this.jTextArea1.append(adventure.getMainText());
         this.jButton1.setText(adventure.getButtonOne());
         this.jButton2.setText(adventure.getButtonTwo());
         this.jButton3.setText(adventure.getButtonThree());
         System.out.println(this.adventure.getSingleValue(0) + " " + this.adventure.getSingleValue(1) + " " + this.adventure.getSingleValue(2));
-        
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        adventure.enterAndUpdate(adventure.getSingleValue(1));
+        if(intermediate.size()<=Integer.parseInt(adventure.getSingleValue(1))){
+            //JOptionPane.showInputDialog("Scene Does not exist");
+            JOptionPane.showConfirmDialog(rootPane, "Scene Does not exist");
+        } else {
+        
+        adventure.enterAndUpdate(Integer.parseInt(adventure.getSingleValue(1)));
         this.jTextArea1.setText(null);
         this.jTextArea1.append(adventure.getMainText());
         this.jButton1.setText(adventure.getButtonOne());
         this.jButton2.setText(adventure.getButtonTwo());
         this.jButton3.setText(adventure.getButtonThree());
         System.out.println(this.adventure.getSingleValue(0) + " " + this.adventure.getSingleValue(1) + " " + this.adventure.getSingleValue(2));
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-        adventure.enterAndUpdate(adventure.getSingleValue(2));
+        if(intermediate.size()<=Integer.parseInt(adventure.getSingleValue(2))){
+            //JOptionPane.showInputDialog("Scene Does not exist");
+            JOptionPane.showConfirmDialog(rootPane, "Scene Does not exist");
+        } else {
+        
+        
+        adventure.enterAndUpdate(Integer.parseInt(adventure.getSingleValue(2)));
         this.jTextArea1.setText(null);
         this.jTextArea1.append(adventure.getMainText());
         this.jButton1.setText(adventure.getButtonOne());
         this.jButton2.setText(adventure.getButtonTwo());
         this.jButton3.setText(adventure.getButtonThree());
         System.out.println(this.adventure.getSingleValue(0) + " " + this.adventure.getSingleValue(1) + " " + this.adventure.getSingleValue(2));
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

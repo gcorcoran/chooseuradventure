@@ -10,7 +10,7 @@ package chooseuradventure;
  *
  * @author Greg
  */
-public class ChooseUrAdventure {
+public class Startup {
 
     /**
      * @param args the command line arguments
